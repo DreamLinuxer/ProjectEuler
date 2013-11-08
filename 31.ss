@@ -1,0 +1,10 @@
+(define coin (list 1 2 5 10 20 50 100 200))
+(define (change target coins)
+  (cond ((= target 0) 1)
+	((null? coins) 0)
+	((< target 0) 0)
+	(else (+ (change target (cdr coins))
+		 (change (- target (car coins)) coins)))
+	))
+
+(change 200 coin)
